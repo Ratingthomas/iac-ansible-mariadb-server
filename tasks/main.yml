@@ -12,22 +12,13 @@
     enabled: true
   become: true
 
-- name: Ensure Python 3 and pip are installed
+- name: Install Python MySQL library via APT
   apt:
-    name:
-      - python3
-      - python3-pip
-      - python3-dev
-      - default-libmysqlclient-dev
-      - build-essential
+    name: python3-pymysql
     state: present
     update_cache: yes
 
-- name: Install PyMySQL for Ansible MySQL modules
-  pip:
-    name: PyMySQL
-    executable: pip3
-
+    
 - name: Create a database
   ansible.builtin.mysql_db:
     name: "{{ db_name }}"
