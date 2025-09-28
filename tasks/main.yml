@@ -18,9 +18,17 @@
     state: present
     update_cache: yes
 
-    
-- name: Create a database
+- name: Create a database user
+  ansible.builtin.mysql_user:
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: '*.*:ALL'
+    host: localhost
+    state: present
+
+- name: Create the database
   ansible.builtin.mysql_db:
     name: "{{ db_name }}"
     state: present
-  become: true
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"

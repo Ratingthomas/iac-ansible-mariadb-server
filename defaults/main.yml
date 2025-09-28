@@ -2,3 +2,6 @@
 ---
 # defaults file for role_db
 db_name: my_database
+
+db_user: user
+db_password: admin
