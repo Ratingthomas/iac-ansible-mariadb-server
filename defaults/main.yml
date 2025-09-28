@@ -5,3 +5,4 @@ db_name: my_database
 
 db_user: user
 db_password: admin
+mysql_socket: /var/run/mysqld/mysqld.sock
